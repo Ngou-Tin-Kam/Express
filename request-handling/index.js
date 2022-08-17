@@ -2,12 +2,23 @@ const express = require("express");
 
 const app = express();
 
+const server = app.listen(7300, () => {
+  console.log(`Port: ${server.address().port} has started`);
+});
+
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 
-app.get("/hello", (req, res) => {
-    res.send("Hello, World!");
+app.use((req, res, next) => {
+  const logEntry = 
+    `host: ${req.host}
+    ip: ${req.ip}
+    method: ${req.method}
+    path: ${req.path}
+    time: ${new Date()}`;
+  console.log(logEntry);
+  next();
 });
 
 app.post("/createDog", (req, res) => {
@@ -36,8 +47,4 @@ app.delete("/removeDog/:id", (req, res) => {
     console.log("PARAMS:", req.params);
 
     res.send();
-});
-
-const server = app.listen(7300, () => {
-    console.log(`Port: ${server.address().port} has started`);
 });
