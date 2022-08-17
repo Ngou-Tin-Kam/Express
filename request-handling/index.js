@@ -33,7 +33,7 @@ app.put("/updateDog", (req, res) => {
 })
 
 app.delete("/removeDog/:id", (req, res) => {
-    console.log("PaARAMS:", req.params);
+    console.log("PARAMS:", req.params);
 
     res.send();
 });
