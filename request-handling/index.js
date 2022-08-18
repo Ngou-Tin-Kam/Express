@@ -21,30 +21,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/createDog", (req, res) => {
-    console.log("BODY:", req.body);
+const routes = require('./routes/routes');
 
-    res.status(201).send();
-});
-
-app.get("/getAllDogs", (req, res) => {
-    res.send();
-});
-
-app.get("/getDog/:id", (req, res) => {
-    console.log("PARAMS:", req.params);
-
-    res.send();
-});
-
-app.put("/updateDog", (req, res) => {
-    console.log("QUERYL", req.query);
-
-    res.send();
-})
-
-app.delete("/removeDog/:id", (req, res) => {
-    console.log("PARAMS:", req.params);
-
-    res.send();
-});
+app.use(routes);
