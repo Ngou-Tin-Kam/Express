@@ -10,6 +10,12 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
+const routes = require("./routes/dogs-routes");
+
+const Dog = require('./db');
+
+console.log(Dog);
+
 app.use((req, res, next) => {
   const logEntry = `host: ${req.host}
     ip: ${req.ip}
@@ -19,7 +25,5 @@ app.use((req, res, next) => {
   console.log(logEntry);
   next();
 });
-
-const routes = require('./routes/routes');
 
 app.use(routes);
