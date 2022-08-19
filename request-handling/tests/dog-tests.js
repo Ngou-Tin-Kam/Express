@@ -86,7 +86,7 @@ describe("CRUD Testing", () => {
     chai.request(server).delete(`/removeDog/${id}`).query({ name: "Test Dog" }).end((err, res) => {
         expect(err).to.be.null;
         expect(res.status).to.equal(204);
-        expect(res.body._id).to.not.be.null;
+        expect(res.body).to.be.empty;
         return done();
       });
   });
