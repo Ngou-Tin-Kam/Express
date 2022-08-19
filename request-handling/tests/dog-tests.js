@@ -13,11 +13,12 @@ const server = require("../index");
 // Setup
 describe("CRUD Testing", () => {
   let id;
+  let testDog;
 
   beforeEach(async () => {
     try {
       await Dog.deleteMany({});
-      const testDog = await Dog.create({
+      testDog = await Dog.create({
         name: "Smiley",
         breed: "Shiba Inu",
         age: 10,
