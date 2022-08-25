@@ -2,6 +2,10 @@ const express = require('express');
 
 const app = express();
 
+const cors = require('cors');
+
+app.use(cors());
+
 const server = app.listen(7300, () => {
   console.log(`Port: ${server.address().port} has started`);
 });
@@ -10,7 +14,7 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-const routes = require("./routes/dogs-routes");
+const routes = require('./routes/dogs-routes');
 
 const Dog = require('./db');
 
